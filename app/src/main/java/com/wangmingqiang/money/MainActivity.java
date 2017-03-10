@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchFragment(int checkedId) {
-
         //开启事务
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         hiddenFragment(ft);
