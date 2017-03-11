@@ -9,6 +9,7 @@ import android.view.View;
 
 public class UiUtils {
 
+
     public static Context  getContext(){
 
         return MyApplication.getContext();

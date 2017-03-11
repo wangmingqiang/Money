@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class PropertyFragment extends Fragment {
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

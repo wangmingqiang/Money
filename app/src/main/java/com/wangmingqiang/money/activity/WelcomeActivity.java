@@ -23,6 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
     @InjectView(R.id.activity_splash)
     RelativeLayout activitySplash;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

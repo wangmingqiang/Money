@@ -11,6 +11,7 @@ import android.os.Handler;
 
 public class MyApplication extends Application {
 
+
     private static Context context;
     private static Thread mainThread;
     private static int threadid;

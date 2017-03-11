@@ -8,6 +8,7 @@ import static android.os.Build.HOST;
 
 public class AppNetConfig {
 
+
     /*
     *
     * IP地址 和 域名的区别
