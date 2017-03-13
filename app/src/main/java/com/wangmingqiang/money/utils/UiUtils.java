@@ -3,6 +3,8 @@ package com.wangmingqiang.money.utils;
 import android.content.Context;
 import android.view.View;
 
+import com.wangmingqiang.money.command.MyApplication;
+
 /**
  * Created by wangmingqiang on 2017/3/11.
  */

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         switchFragment(R.id.rb_main);
         initlistener();
+        
     }
 
 

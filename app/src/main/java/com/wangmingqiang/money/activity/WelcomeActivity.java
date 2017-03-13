@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.wangmingqiang.money.MainActivity;
 import com.wangmingqiang.money.R;
+import com.wangmingqiang.money.utils.AppManager;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -87,5 +88,11 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         activitySplash.startAnimation(animation);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().remove(this);
     }
 }

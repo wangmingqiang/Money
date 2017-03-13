@@ -1,6 +1,4 @@
-package com.wangmingqiang.money.utils;
-
-import static android.os.Build.HOST;
+package com.wangmingqiang.money.command;
 
 /**
  * Created by wangmingqiang on 2017/3/11.
@@ -8,9 +6,10 @@ import static android.os.Build.HOST;
 
 public class AppNetConfig {
 
+    public static final String HOST ="47.93.118.241";//提供ip地址
 
     /*
-    *
+    *http://47.93.118.241:8081/P2PInvest/index
     * IP地址 和 域名的区别
     *
     * 第一 IP地址效率高 域名效率低
