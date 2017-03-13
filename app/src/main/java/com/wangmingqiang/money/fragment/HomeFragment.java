@@ -1,14 +1,9 @@
 package com.wangmingqiang.money.fragment;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +17,6 @@ import com.wangmingqiang.money.ui.MyProgress;
 import com.wangmingqiang.money.utils.LoadNet;
 import com.wangmingqiang.money.utils.LoadNetHttp;
 import com.wangmingqiang.money.utils.ThreadPool;
-import com.wangmingqiang.money.utils.UiUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 import com.youth.banner.transformer.BackgroundToForegroundTransformer;
@@ -36,7 +30,7 @@ import butterknife.InjectView;
 /**
  * Created by wangmingqiang on 2017/3/10.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
 
     @InjectView(R.id.base_title)
@@ -55,33 +49,21 @@ public class HomeFragment extends Fragment {
     MyProgress homeProgress;
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = UiUtils.getView(R.layout.fragment_home);
-        // View view=View.inflate(getActivity(), R.layout.fragment_home,null);
-        ButterKnife.inject(this, view);
-        return view;
-
+    protected int getLayoutid() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        intiData();
-
-        initListener();
-    }
-
-    private void initListener() {
+    protected void initListener() {
         //初始化title
         baseTitle.setText("首页");
         baseBack.setVisibility(View.INVISIBLE);
         baseSetting.setVisibility(View.INVISIBLE);
     }
 
-    private void intiData() {
+    @Override
+    protected void initData() {
         LoadNet.getDataPost(AppNetConfig.INDEX, new LoadNetHttp() {
             @Override
             public void success(String context) {
@@ -104,6 +86,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 
     private void initProgress(final HomeBean.ProInfoBean proInfo) {
 

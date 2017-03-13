@@ -124,7 +124,7 @@ public class MyProgress extends View{
         paint.setColor(sweepColor);
         //第二个参数是起始角 第三个参数多少度
 
-        canvas.drawArc(rectf, 0, sweepArc, false, paint);
+        canvas.drawArc(rectf, 0, sweepArc * 360 / 100 , false, paint);
 
 
         /**
