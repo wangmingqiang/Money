@@ -15,12 +15,14 @@ public class MyApplication extends Application {
     private static Context context;
     private static Thread mainThread;
     private static int threadid;
-    private Handler handler;
+    private static Handler handler;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context=this;
+        threadid=android.os.Process.myPid();
+        handler=new Handler();
     }
 
     public static Context getContext() {
@@ -35,7 +37,7 @@ public class MyApplication extends Application {
         return threadid;
     }
 
-    public Handler getHandler() {
+    public static Handler getHandler() {
         return handler;
     }
 

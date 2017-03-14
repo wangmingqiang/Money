@@ -2,11 +2,9 @@ package com.wangmingqiang.money.fragment;
 
 import android.content.Context;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.squareup.picasso.Picasso;
@@ -14,8 +12,6 @@ import com.wangmingqiang.money.R;
 import com.wangmingqiang.money.bean.HomeBean;
 import com.wangmingqiang.money.command.AppNetConfig;
 import com.wangmingqiang.money.ui.MyProgress;
-import com.wangmingqiang.money.utils.LoadNet;
-import com.wangmingqiang.money.utils.LoadNetHttp;
 import com.wangmingqiang.money.utils.ThreadPool;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
@@ -63,13 +59,14 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
-        LoadNet.getDataPost(AppNetConfig.INDEX, new LoadNetHttp() {
-            @Override
-            public void success(String context) {
-                // Toast.makeText(getActivity(), "成功" + context, Toast.LENGTH_SHORT).show();
+    public String getChildUrl() {
+        return AppNetConfig.INDEX;
+    }
 
-                HomeBean homeBean = JSON.parseObject(context, HomeBean.class);
+    @Override
+    protected void initData(String json) {
+
+                HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
 
                 tvHomeProduct.setText(homeBean.getProInfo().getName());
                 tvHomeYearrate.setText(homeBean.getProInfo().getYearRate() + "%");
@@ -77,14 +74,7 @@ public class HomeFragment extends BaseFragment {
                 //注意：展示UI一定要判断是不是主线程
                 initProgress(homeBean.getProInfo());
                 initBanner(homeBean);
-            }
 
-            @Override
-            public void failure(String error) {
-                Toast.makeText(getActivity(), "失败" + error, Toast.LENGTH_SHORT).show();
-                Log.e("TAG", error);
-            }
-        });
     }
 
 
