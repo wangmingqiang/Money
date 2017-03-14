@@ -53,13 +53,13 @@ public abstract class BaseInvestAllAdapter2<T> extends BaseAdapter {
 
         T t = list.get(position);
 
-        setData(t,convertView);
+        setData(t);
 
 
         return convertView;
     }
 
-    protected abstract void setData(T t, View convertView);
+    protected abstract void setData(T t);
 
     public abstract View initView();
 

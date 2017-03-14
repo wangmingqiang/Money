@@ -7,10 +7,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.wangmingqiang.money.R;
+import com.wangmingqiang.money.utils.ThreadPool;
 
 /**
  * Created by wangmingqiang on 2017/3/13.
@@ -153,5 +155,25 @@ public class MyProgress extends View{
         * */
         postInvalidate();
 
+    }
+
+    public void setPro(final int parseInt) {
+        if(sweepArc==0) {
+            ThreadPool.getInstance().getGlobalThread().execute(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i <=parseInt; i++) {
+                        SystemClock.sleep(20);
+                        sweepArc=i;
+                        postInvalidate();
+
+                    }
+                }
+            });
+        }else {
+            //防止复用进度条的进度
+            sweepArc=parseInt;
+            postInvalidate();
+        }
     }
 }

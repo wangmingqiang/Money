@@ -39,7 +39,7 @@ public class InvestAllAdapter2 extends BaseInvestAllAdapter2<InvestAllBean.DataB
     }
 
     @Override
-    protected void setData(InvestAllBean.DataBean dataBean, View convertView) {
+    protected void setData(InvestAllBean.DataBean dataBean) {
 
         pName.setText(dataBean.getName());
         pMoney.setText(dataBean.getMoney());
@@ -47,6 +47,9 @@ public class InvestAllAdapter2 extends BaseInvestAllAdapter2<InvestAllBean.DataB
         pSuodingdays.setText(dataBean.getSuodingDays());
         pMinzouzi.setText(dataBean.getMinTouMoney());
         pMinnum.setText(dataBean.getMemberNum());
+
+        int parseInt = Integer.parseInt(dataBean.getProgress());
+        pProgresss.setPro(parseInt);
 
 
     }

@@ -37,8 +37,10 @@ public class InvestHolder extends BaseHolder<InvestAllBean.DataBean> {
         return UiUtils.getView(R.layout.adapter_invest_all);
     }
 
+
     @Override
     public void setChildData() {
+
 
         InvestAllBean.DataBean dataBean = getT();
 
@@ -48,6 +50,12 @@ public class InvestHolder extends BaseHolder<InvestAllBean.DataBean> {
         pSuodingdays.setText(dataBean.getSuodingDays());
         pMinzouzi.setText(dataBean.getMinTouMoney());
         pMinnum.setText(dataBean.getMemberNum());
+
+
+        int parseInt = Integer.parseInt(dataBean.getProgress());
+        pProgresss.setPro(parseInt);
+
+
 
     }
 }

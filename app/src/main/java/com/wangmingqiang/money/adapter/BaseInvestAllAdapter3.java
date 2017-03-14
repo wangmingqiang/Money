@@ -46,7 +46,7 @@ public abstract class BaseInvestAllAdapter3<T> extends BaseAdapter {
 
         }else{
             baseHolder= (BaseHolder) convertView.getTag();
-        }
+    }
 
          /**
         * 第二层抽出
@@ -62,6 +62,5 @@ public abstract class BaseInvestAllAdapter3<T> extends BaseAdapter {
     }
 
     protected abstract BaseHolder getHolder();
-
 
 }

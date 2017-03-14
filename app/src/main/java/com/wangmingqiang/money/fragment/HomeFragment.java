@@ -109,6 +109,7 @@ public class HomeFragment extends BaseFragment {
         banner.setImages(urls);
         //设置banner的样式
         banner.setBannerAnimation(BackgroundToForegroundTransformer.class);
+
         banner.start();
     }
 

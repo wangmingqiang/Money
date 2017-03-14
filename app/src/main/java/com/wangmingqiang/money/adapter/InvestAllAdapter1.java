@@ -34,6 +34,7 @@ public class InvestAllAdapter1 extends BaseInvestAllAdapter1<InvestAllBean.DataB
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        //随便展示两个数据
         viewHolder.pName.setText(list.get(position).getName());
         viewHolder.pMoney.setText(list.get(position).getMoney());
 
