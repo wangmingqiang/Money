@@ -4,7 +4,7 @@ import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.wangmingqiang.money.R;
-import com.wangmingqiang.money.adapter.InvestAllAdapter2;
+import com.wangmingqiang.money.adapter.InvestAllAdapter3;
 import com.wangmingqiang.money.bean.InvestAllBean;
 import com.wangmingqiang.money.command.AppNetConfig;
 
@@ -33,7 +33,7 @@ public class InvestAllFragmen extends BaseFragment {
 
         InvestAllBean investAllBean = JSON.parseObject(json, InvestAllBean.class);
 
-        InvestAllAdapter2 adapter=new InvestAllAdapter2(investAllBean.getData());
+        InvestAllAdapter3 adapter=new InvestAllAdapter3(investAllBean.getData());
 
         investAllLv.setAdapter(adapter);
 
