@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -35,6 +34,7 @@ public abstract class LoadingPager extends FrameLayout {
 
     public LoadingPager(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context=context;
         init();
     }
 
@@ -51,7 +51,7 @@ public abstract class LoadingPager extends FrameLayout {
 
     private void init() {
         //设置全屏属性
-        params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        params = new LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
         //加载布局
         if(loadingView==null) {
@@ -83,7 +83,7 @@ public abstract class LoadingPager extends FrameLayout {
     }
 
     /**
-     * 根据状态来展示不同的页面
+     * 展示页面
      */
     private void showView() {
         //是否展示错误页面
@@ -106,7 +106,7 @@ public abstract class LoadingPager extends FrameLayout {
     }
 
     /**
-     *  根据不同的网络状态加载相应的页面
+     *  根据不同的状态加载相应的页面
      * @return
      */
     public void loadData(){
@@ -114,6 +114,13 @@ public abstract class LoadingPager extends FrameLayout {
         AsyncHttpClient httpClient = new AsyncHttpClient();
 
         String url = getUrl();
+        if(TextUtils.isEmpty(url)) {
+            //如果时空默认为不加载网络
+            resultState=ResultState.SUCCESS;//改变状态
+
+            loadImage();
+            return;
+        }
         httpClient.post(url,new AsyncHttpResponseHandler(){
             @Override
             public void onSuccess(String content) {
@@ -136,7 +143,6 @@ public abstract class LoadingPager extends FrameLayout {
             }
         });
     }
-
 
     /**
      * 根据枚举不同的值 来设置不同的状态

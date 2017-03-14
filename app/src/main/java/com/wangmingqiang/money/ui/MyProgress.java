@@ -63,6 +63,7 @@ public class MyProgress extends View{
 
         //自定义属性
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.progress);
+
         //第一个参数获取attrs里面的配置属性名，第二个参数设置默认值
         roundColor=typedArray.getColor(R.styleable.progress_roundColor, Color.GRAY);
         sweepColor=typedArray.getColor(R.styleable.progress_sweepColor, Color.RED);
