@@ -80,6 +80,18 @@ public class PropertyFragment extends BaseFragment {
                 return ""; //不能为空否则会报错
             }
         }).into(ivMeIcon);
+
+
+
+//        //第二种方式不用工具类  依赖第三方
+//        Picasso.with(getActivity()).load(AppNetConfig.BASE_URL+"/images/tx.png")
+//                .transform(new CropCircleTransformation())
+//                .transform(new ColorFilterTransformation(Color.parseColor("#66FFccff")))
+//                //第二个参数值越大越模糊
+//                .transform(new BlurTransformation(getActivity(),80))
+//                .into(ivMeIcon);
+
+
     }
 
     @Override
