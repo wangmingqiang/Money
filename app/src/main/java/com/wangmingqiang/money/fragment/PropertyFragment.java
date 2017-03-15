@@ -1,28 +1,31 @@
 package com.wangmingqiang.money.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.wangmingqiang.money.R;
 
 /**
  * Created by wangmingqiang on 2017/3/10.
  */
 
-public class PropertyFragment extends Fragment {
+public class PropertyFragment extends BaseFragment {
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView=new TextView(getActivity());
-        textView.setText("PropertyFragment");
+    protected int getLayoutid() {
+        return R.layout.fragment_property;
+    }
 
-        return textView;
+    @Override
+    protected void initListener() {
 
     }
 
+    @Override
+    protected void initData(String json) {
+
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
+    }
 }
