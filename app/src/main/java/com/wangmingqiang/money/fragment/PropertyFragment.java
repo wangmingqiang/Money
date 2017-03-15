@@ -53,6 +53,7 @@ public class PropertyFragment extends BaseFragment {
 
     }
 
+
     @Override
     protected void initData(String json) {
 

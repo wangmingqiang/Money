@@ -49,10 +49,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //初始化数据
-        //initData();
-        //初始化监听
-        //initListener();
 
         loadingPager.loadData();
     }

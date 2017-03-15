@@ -52,10 +52,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        //初始化title
-        baseTitle.setText("首页");
-        baseBack.setVisibility(View.INVISIBLE);
-        baseSetting.setVisibility(View.INVISIBLE);
+
     }
 
     @Override
@@ -66,14 +63,18 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initData(String json) {
 
-                HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
+        baseTitle.setText("首页");
+        baseBack.setVisibility(View.INVISIBLE);
+        baseSetting.setVisibility(View.INVISIBLE);
 
-                tvHomeProduct.setText(homeBean.getProInfo().getName());
-                tvHomeYearrate.setText(homeBean.getProInfo().getYearRate() + "%");
+        HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
 
-                //注意：展示UI一定要判断是不是主线程
-                initProgress(homeBean.getProInfo());
-                initBanner(homeBean);
+        tvHomeProduct.setText(homeBean.getProInfo().getName());
+        tvHomeYearrate.setText(homeBean.getProInfo().getYearRate() + "%");
+
+        //注意：展示UI一定要判断是不是主线程
+        initProgress(homeBean.getProInfo());
+        initBanner(homeBean);
 
     }
 
