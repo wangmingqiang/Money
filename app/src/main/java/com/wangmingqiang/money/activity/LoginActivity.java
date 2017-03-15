@@ -1,5 +1,6 @@
 package com.wangmingqiang.money.activity;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -51,36 +52,47 @@ public class LoginActivity extends BaseActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //校验
-                String phone = loginEtNumber.getText().toString().trim();
-                String pw = loginEtPwd.getText().toString().trim();
-                
-                if(TextUtils.isEmpty(phone)) {
-                    showToast("账号不能为空");
-                    return;
-                }
-                if(TextUtils.isEmpty(pw)) {
-                    showToast("密码不能为空");
-                    return;
-                }
+                login();
+            }
+        });
+        loginRegitsterTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegesterActivity.class));
+            }
+        });
+    }
 
-                Map<String,String> map=new HashMap<String, String>();
+    private void login() {
 
-                map.put("phone",phone);
-                map.put("password",pw);
+        //校验
+        String phone = loginEtNumber.getText().toString().trim();
+        String pw = loginEtPwd.getText().toString().trim();
 
-                //去服务器登录
-                LoadNet.getDataPost(AppNetConfig.LOGIN, map, new LoadNetHttp() {
-                    @Override
-                    public void success(String context) {
-                        Log.i("login", "success: "+context);
-                    }
+        if(TextUtils.isEmpty(phone)) {
+            showToast("账号不能为空");
+            return;
+        }
+        if(TextUtils.isEmpty(pw)) {
+            showToast("密码不能为空");
+            return;
+        }
 
-                    @Override
-                    public void failure(String error) {
-                        Log.i("error", "success: "+error);
-                    }
-                });
+        Map<String,String> map=new HashMap<String, String>();
+
+        map.put("phone",phone);
+        map.put("password",pw);
+
+        //去服务器登录
+        LoadNet.getDataPost(AppNetConfig.LOGIN, map, new LoadNetHttp() {
+            @Override
+            public void success(String context) {
+                Log.i("login", "success: "+context);
+            }
+
+            @Override
+            public void failure(String error) {
+                Log.i("error", "success: "+error);
             }
         });
     }
