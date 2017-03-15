@@ -3,6 +3,7 @@ package com.wangmingqiang.money.activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
@@ -88,8 +89,14 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private boolean isLogin() {
-        return false;
+        String name = getUser().getData().getName();
+        if (TextUtils.isEmpty(name)){
+            return false;
+        }
+        return true;
     }
+
+
 
     private String  getVersion() {
 

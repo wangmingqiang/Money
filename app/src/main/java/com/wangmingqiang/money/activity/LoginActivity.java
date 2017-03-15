@@ -10,7 +10,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.wangmingqiang.money.MainActivity;
 import com.wangmingqiang.money.R;
+import com.wangmingqiang.money.bean.UserInfo;
 import com.wangmingqiang.money.command.AppNetConfig;
 import com.wangmingqiang.money.utils.LoadNet;
 import com.wangmingqiang.money.utils.LoadNetHttp;
@@ -55,6 +59,7 @@ public class LoginActivity extends BaseActivity {
                 login();
             }
         });
+
         loginRegitsterTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,31 +68,42 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
+    //登录
     private void login() {
-
         //校验
         String phone = loginEtNumber.getText().toString().trim();
         String pw = loginEtPwd.getText().toString().trim();
-
-        if(TextUtils.isEmpty(phone)) {
+        if (TextUtils.isEmpty(phone)){
             showToast("账号不能为空");
             return;
         }
-        if(TextUtils.isEmpty(pw)) {
+        if (TextUtils.isEmpty(pw)){
             showToast("密码不能为空");
             return;
         }
 
-        Map<String,String> map=new HashMap<String, String>();
-
+        Map<String,String> map = new HashMap<String, String>();
         map.put("phone",phone);
         map.put("password",pw);
-
         //去服务器登录
         LoadNet.getDataPost(AppNetConfig.LOGIN, map, new LoadNetHttp() {
             @Override
             public void success(String context) {
                 Log.i("login", "success: "+context);
+                JSONObject jsonObject = JSON.parseObject(context);
+                Boolean success = jsonObject.getBoolean("success");
+                if (success){
+                    //解析数据
+                    UserInfo userInfo = JSON.parseObject(context, UserInfo.class);
+                    //保存数据到sp
+                    saveUser(userInfo);
+                    //跳转
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    //结束当前页面
+                    finish();
+                }else{
+                    showToast("账号不存在或者密码错误");
+                }
             }
 
             @Override
@@ -95,6 +111,7 @@ public class LoginActivity extends BaseActivity {
                 Log.i("error", "success: "+error);
             }
         });
+
     }
 
     @Override
@@ -104,10 +121,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initTitle() {
-        baseTitle.setText("登录");
         baseBack.setVisibility(View.INVISIBLE);
         baseSetting.setVisibility(View.INVISIBLE);
-
+        baseTitle.setText("登录");
     }
 
     @Override

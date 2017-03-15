@@ -9,7 +9,7 @@ public class AppNetConfig {
     public static final String HOST ="47.93.118.241";//提供ip地址
 
     /**
-    *http://47.93.118.241:8081/P2PInvest/index
+    *http://47.93.118.241:8081/P2PInvest/login
     * IP地址 和 域名的区别
     *
     * 第一 IP地址效率高 域名效率低
