@@ -3,6 +3,7 @@ package com.wangmingqiang.money.fragment;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wangmingqiang.money.R;
 import com.wangmingqiang.money.utils.UiUtils;
@@ -89,7 +90,7 @@ public class InvestRecommendFragment extends BaseFragment {
         //每个组都是从0开始
         @Override
         public View getView(int group, int position, View convertView) {
-            TextView tv=new TextView(getActivity());
+            final TextView tv=new TextView(getActivity());
             if(group==0) {
                 tv.setText(oneDatas[position]);
             }else {
@@ -100,6 +101,14 @@ public class InvestRecommendFragment extends BaseFragment {
             int green = random.nextInt(211); //0-255 颜色值
             int blue = random.nextInt(211); //0-255 颜色值
             tv.setTextColor(Color.rgb(red,green,blue));
+
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), tv.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
             return tv;
         }
 
