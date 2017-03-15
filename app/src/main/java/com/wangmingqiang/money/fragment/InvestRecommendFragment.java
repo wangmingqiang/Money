@@ -1,11 +1,14 @@
 package com.wangmingqiang.money.fragment;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import com.wangmingqiang.money.R;
 import com.wangmingqiang.money.utils.UiUtils;
 import com.wangmingqiang.money.utils.randomLayout.StellarMap;
+
+import java.util.Random;
 
 import butterknife.InjectView;
 
@@ -21,6 +24,8 @@ public class InvestRecommendFragment extends BaseFragment {
             "中情局投资商业经营", "大学老师购买车辆", "屌丝下海经商计划", "美人鱼影视拍摄投资", "Android培训老师自己周转", "养猪场扩大经营",
             "旅游公司扩大规模", "铁路局回款计划", "屌丝迎娶白富美计划"
     };
+
+    private Random random=new Random();
 
     private String[] oneDatas = new String[datas.length / 2];
     private String[] twoDatas = new String[datas.length - datas.length / 2];
@@ -90,6 +95,11 @@ public class InvestRecommendFragment extends BaseFragment {
             }else {
                 tv.setText(twoDatas[position]);
             }
+
+            int red=random.nextInt(211);
+            int green = random.nextInt(211); //0-255 颜色值
+            int blue = random.nextInt(211); //0-255 颜色值
+            tv.setTextColor(Color.rgb(red,green,blue));
             return tv;
         }
 
