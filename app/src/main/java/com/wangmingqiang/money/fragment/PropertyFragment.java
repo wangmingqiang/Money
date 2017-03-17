@@ -2,6 +2,8 @@ package com.wangmingqiang.money.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,6 +22,11 @@ import com.wangmingqiang.money.activity.WithDrawActivity;
 import com.wangmingqiang.money.bean.UserInfo;
 import com.wangmingqiang.money.command.AppNetConfig;
 import com.wangmingqiang.money.utils.BitmapUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import butterknife.InjectView;
 
@@ -155,7 +162,46 @@ public class PropertyFragment extends BaseFragment {
         return null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity activity = (MainActivity) getActivity();
+        Boolean update = activity.isUpdate();
+        if(update) {
+            File filesDir = null;
+            FileInputStream is = null;
+            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                //外部存储路径
+                filesDir= getActivity().getExternalFilesDir("");
 
+            }else {
+                filesDir = getActivity().getFilesDir(); //内部存储路径
+            }
 
+            //全路径
+            File path = new File(filesDir,"123.png");
 
+            if(path.exists()) {
+                try {
+                    is = new FileInputStream(path);
+                    //第一个参数是图片的格式，第二个参数是图片的质量数值大的大质量高，第三个是输出流
+                    Bitmap bitmap = BitmapFactory.decodeStream(is);
+                    Bitmap circleBitmap = BitmapUtils.circleBitmap(bitmap);
+                    ivMeIcon.setImageBitmap(circleBitmap);
+                    activity.saveImage(false);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }finally {
+                    try {
+                         if (is != null){
+                               is.close();
+                         }
+                    } catch (IOException e) {
+                          e.printStackTrace();
+                    }
+                }
+                }
+
+            }
+    }
 }
