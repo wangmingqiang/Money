@@ -60,7 +60,8 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <activity android:name=".activity.WithDrawActivity"></activity>
+        <activity android:name=".activity.WithDrawActivity" />
+        <activity android:name=".activity.ImageSettingActivity"></activity>
     </application>
 
 </manifest>

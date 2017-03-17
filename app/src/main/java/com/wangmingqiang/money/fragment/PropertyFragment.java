@@ -12,6 +12,7 @@ import com.squareup.picasso.Transformation;
 import com.wangmingqiang.money.MainActivity;
 import com.wangmingqiang.money.R;
 import com.wangmingqiang.money.activity.ColumnActivity;
+import com.wangmingqiang.money.activity.ImageSettingActivity;
 import com.wangmingqiang.money.activity.LineChartActivity;
 import com.wangmingqiang.money.activity.PieActivity;
 import com.wangmingqiang.money.activity.ReChargeActivity;
@@ -93,6 +94,12 @@ public class PropertyFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),WithDrawActivity.class));
+            }
+        });
+        tvSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),ImageSettingActivity.class));
             }
         });
 
