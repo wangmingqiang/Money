@@ -51,7 +51,10 @@ public class RegesterActivity extends BaseActivity {
                 String pwd = etRegisterPwd.getText().toString().trim();
                 String pwdAgain = etRegisterPwdagain.getText().toString().trim();
 
-                //判断两个密码是否一致  判断密码的长度  判断是否注册过
+                /**判断两个密码是否一致  判断密码的长度  判断是否注册过
+                 * 还有很多的逻辑判断我们可以去完善
+                 */
+
                 if(TextUtils.isEmpty(name)|| TextUtils.isEmpty(number) ||TextUtils.isEmpty(pwd) || TextUtils.isEmpty(pwdAgain)) {
                         showToast("兄弟不能為空能仔細點不傻逼");
                     return;

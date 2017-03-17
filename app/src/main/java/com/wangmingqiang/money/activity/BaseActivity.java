@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //保存用户信息
     public void saveUser(UserInfo userInfo){
-        SharedPreferences sp = getSharedPreferences("user_info", MODE_PRIVATE);
+        SharedPreferences sp =   getSharedPreferences("user_info", MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         edit.putString("imageurl",userInfo.getData().getImageurl());
         edit.putString("iscredit",userInfo.getData().getIscredit());

@@ -89,9 +89,12 @@ public class LoginActivity extends BaseActivity {
         LoadNet.getDataPost(AppNetConfig.LOGIN, map, new LoadNetHttp() {
             @Override
             public void success(String context) {
-                Log.i("login", "success: "+context);
+                Log.e("login", "success: "+context);
                 JSONObject jsonObject = JSON.parseObject(context);
+
                 Boolean success = jsonObject.getBoolean("success");
+
+
                 if (success){
                     //解析数据
                     UserInfo userInfo = JSON.parseObject(context, UserInfo.class);

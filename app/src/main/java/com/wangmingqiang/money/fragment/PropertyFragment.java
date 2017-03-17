@@ -1,6 +1,8 @@
 package com.wangmingqiang.money.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -9,6 +11,9 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import com.wangmingqiang.money.MainActivity;
 import com.wangmingqiang.money.R;
+import com.wangmingqiang.money.activity.ColumnActivity;
+import com.wangmingqiang.money.activity.LineChartActivity;
+import com.wangmingqiang.money.activity.PieActivity;
 import com.wangmingqiang.money.bean.UserInfo;
 import com.wangmingqiang.money.command.AppNetConfig;
 import com.wangmingqiang.money.utils.BitmapUtils;
@@ -51,11 +56,40 @@ public class PropertyFragment extends BaseFragment {
     @Override
     protected void initListener() {
 
+        llZichan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(),PieActivity.class));
+                //Toast.makeText(getActivity(), "cc", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        llTouziZhiguan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(),ColumnActivity.class));
+                //Toast.makeText(getActivity(), "bb", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        llTouzi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),LineChartActivity.class));
+                //Toast.makeText(getActivity(), "aa", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
 
     @Override
     protected void initData(String json) {
+
+        initListener();
 
         MainActivity activity= (MainActivity) getActivity();
         UserInfo user = activity.getUser();
