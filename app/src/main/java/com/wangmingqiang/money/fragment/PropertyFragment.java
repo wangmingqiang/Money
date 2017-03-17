@@ -14,6 +14,8 @@ import com.wangmingqiang.money.R;
 import com.wangmingqiang.money.activity.ColumnActivity;
 import com.wangmingqiang.money.activity.LineChartActivity;
 import com.wangmingqiang.money.activity.PieActivity;
+import com.wangmingqiang.money.activity.ReChargeActivity;
+import com.wangmingqiang.money.activity.WithDrawActivity;
 import com.wangmingqiang.money.bean.UserInfo;
 import com.wangmingqiang.money.command.AppNetConfig;
 import com.wangmingqiang.money.utils.BitmapUtils;
@@ -79,6 +81,18 @@ public class PropertyFragment extends BaseFragment {
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),LineChartActivity.class));
                 //Toast.makeText(getActivity(), "aa", Toast.LENGTH_SHORT).show();
+            }
+        });
+        recharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),ReChargeActivity.class));
+            }
+        });
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),WithDrawActivity.class));
             }
         });
 
