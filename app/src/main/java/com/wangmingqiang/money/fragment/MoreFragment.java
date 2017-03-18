@@ -102,8 +102,11 @@ public class MoreFragment extends BaseFragment {
         tvMoreReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),GestureEditActivity.class));
-                toggleMore.setChecked(true);
+                if(getState()) {
+
+                    startActivity(new Intent(getActivity(),GestureEditActivity.class));
+                    toggleMore.setChecked(true);
+                }
             }
         });
 
