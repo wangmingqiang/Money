@@ -59,6 +59,7 @@ public class ReChargeActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
+
         etChongzhi.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -81,18 +82,20 @@ public class ReChargeActivity extends BaseActivity {
                 }else {
                     btnChongzhi.setClickable(true);
                     btnChongzhi.setBackgroundResource(R.drawable.btn_01);
+
+                    btnChongzhi.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AliPayUtils.getInstance().pay(ReChargeActivity.this,"1");
+                        }
+                    });
                 }
 
             }
         });
 
 
-        btnChongzhi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AliPayUtils.getInstance().pay(ReChargeActivity.this,"1");
-            }
-        });
+
 
     }
 
@@ -110,10 +113,6 @@ public class ReChargeActivity extends BaseActivity {
     public int getLayoutid() {
         return R.layout.activity_re_charge;
     }
-
-
-
-
 
 
 }

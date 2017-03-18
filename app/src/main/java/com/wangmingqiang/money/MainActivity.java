@@ -1,5 +1,8 @@
 package com.wangmingqiang.money;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
 import android.view.WindowManager;
@@ -8,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.wangmingqiang.money.activity.BaseActivity;
+import com.wangmingqiang.money.activity.GestureVerifyActivity;
 import com.wangmingqiang.money.fragment.HomeFragment;
 import com.wangmingqiang.money.fragment.InvestFragment;
 import com.wangmingqiang.money.fragment.MoreFragment;
@@ -98,7 +102,22 @@ public class MainActivity extends BaseActivity {
         AppManager.getInstance().addActivity(this);
         //选择默认的fragment
         switchFragment(R.id.rb_main);
+
+        yes();
     }
+
+    private void yes() {
+        SharedPreferences sp =getSharedPreferences("tog_state", Context.MODE_PRIVATE);
+        boolean isOpen = sp.getBoolean("isOpen", false);
+
+        if(isOpen) {
+            startActivity(new Intent(MainActivity.this, GestureVerifyActivity.class));
+
+        }else {
+            //Toast.makeText(MainActivity.this, "提现申请成功", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     protected void initTitle() {
@@ -113,9 +132,6 @@ public class MainActivity extends BaseActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_main;
     }
-
-
-
 
     //双击退出
     private long time = 0;

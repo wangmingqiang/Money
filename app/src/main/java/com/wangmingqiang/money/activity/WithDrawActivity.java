@@ -65,14 +65,15 @@ public class WithDrawActivity extends BaseActivity {
                 }else {
                     btnTixian.setClickable(true);
                     btnTixian.setBackgroundResource(R.drawable.btn_01);
+                    btnTixian.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Toast.makeText(WithDrawActivity.this, "提现申请成功", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
-            }
-        });
-        btnTixian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(WithDrawActivity.this, "提现申请成功", Toast.LENGTH_SHORT).show();
             }
         });
 

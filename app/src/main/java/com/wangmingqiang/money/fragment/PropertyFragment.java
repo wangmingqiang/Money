@@ -188,7 +188,9 @@ public class PropertyFragment extends BaseFragment {
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
                     Bitmap circleBitmap = BitmapUtils.circleBitmap(bitmap);
                     ivMeIcon.setImageBitmap(circleBitmap);
+
                     activity.saveImage(false);
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }finally {

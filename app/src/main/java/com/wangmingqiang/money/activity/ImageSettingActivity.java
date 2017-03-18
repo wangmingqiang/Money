@@ -59,6 +59,21 @@ public class ImageSettingActivity extends BaseActivity {
                 chagerUserIcon();
             }
         });
+        btnUserLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 将SP清除
+                 将File删除
+                 销毁所有的Activity
+                 重新进入主界面*/
+
+                clearFile();
+                clearSp();
+                removeAllActivity();
+                startActivity(new Intent(ImageSettingActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 
@@ -146,6 +161,7 @@ public class ImageSettingActivity extends BaseActivity {
 
             //全路径
             File file = new File(filesDir, "123.png");
+            Log.e("TAG", "ImageSettingActivity saveImage()"+file.toString());
 
             //输出流
             os = new FileOutputStream(file);
