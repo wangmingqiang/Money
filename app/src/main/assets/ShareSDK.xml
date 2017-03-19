@@ -46,7 +46,7 @@
 			VKontakte      http://vk.com/dev
 			易信好友        http://open.yixin.im/
 			明道	           http://open.mingdao.com/
-			Line           http://media.line.me/zh-hant/
+			Line           http://media.line.me/zh-hant/  https://developers.line.me
 			Pocket         http://getpocket.com/developer/apps/new
 			KakaoTalk      https://developers.kakao.com/
 			KakaoStory     https://developers.kakao.com/
@@ -54,7 +54,7 @@
     -->
     
     <ShareSDK 
-        AppKey = "19c73be896871"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "1b3ab12d59742"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
@@ -308,6 +308,8 @@
 	<Line
 	    Id="32"
         SortId="32"
+        ChannelID = "1477692153"
+        ChannelSecret ="f30c036370f2e04ade71c52eef73a9af"
         Enable="true" />
 	
 	<KakaoTalk

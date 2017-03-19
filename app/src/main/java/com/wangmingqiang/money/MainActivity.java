@@ -19,6 +19,7 @@ import com.wangmingqiang.money.fragment.PropertyFragment;
 import com.wangmingqiang.money.utils.AppManager;
 
 import butterknife.InjectView;
+import cn.sharesdk.framework.ShareSDK;
 
 public class MainActivity extends BaseActivity {
 
@@ -102,6 +103,8 @@ public class MainActivity extends BaseActivity {
         AppManager.getInstance().addActivity(this);
         //选择默认的fragment
         switchFragment(R.id.rb_main);
+        //初始化share
+        ShareSDK.initSDK(this);
 
         yes();
     }
